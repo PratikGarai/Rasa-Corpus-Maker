@@ -1,1 +1,1 @@
-python translate.py --data src/inputs/history.yml --name history_marathi
+python translate.py --data inputs/history.yml --name history_marathi --secret secrets.json
