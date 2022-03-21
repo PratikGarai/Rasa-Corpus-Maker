@@ -4,14 +4,7 @@ from yaml.loader import SafeLoader
 import pprint
 import json
 
-
-class Translator : 
-    def __init__(self) :
-        pass 
-    
-    def translate(self, data : str) -> str:
-        return data
-
+from src.utils.translator import Translator
 
 class TranslatorDriver : 
     def __init__(self, infile_name : str, outfile_name : str) :
@@ -41,6 +34,10 @@ class TranslatorDriver :
             conversations.append(d)
         res["conversations"] = conversations
         self.res = res
+    
+    def load_secrets(self) :
+        json.load()
+
 
 
 
@@ -50,6 +47,7 @@ def get_args() :
         "--data", type=str, required=True, help="path to your train dataset"
     )
     parser.add_argument("--name", type=str, help="name of your save file")
+    parser.add_argument("--secret", type=str, help="name of your secret file")
     return parser.parse_args()
 
 if __name__=="__main__" :
