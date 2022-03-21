@@ -27,5 +27,5 @@ class Solution :
 
 if __name__=="__main__":
     s = Solution()
-    s.read_yml("nlu.yml")
+    s.read_yml("src/inputs/nlu.yml")
     s.pretty_print_data()
