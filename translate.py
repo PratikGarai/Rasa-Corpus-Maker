@@ -33,8 +33,6 @@ class TranslatorDriver :
     def translate(self, data : str) :
         data = self.translator.translate(data)
         res = data[0]["translations"][0]["text"]
-        print(res)
-
         return res
     
 
@@ -46,9 +44,7 @@ class TranslatorDriver :
             d = []
             for dialogue in conversation : 
                 d.append(self.translate(dialogue))
-                break
             conversations.append(d)
-            break
         res["conversations"] = conversations
         self.res = res
 
