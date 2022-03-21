@@ -56,7 +56,7 @@ class TranslatorDriver :
 
     def save_result(self):
         with open(os.path.join("outputs", self.outfile_name+".yml"), 'w',  encoding="utf-8") as f:
-            yaml.dump(self.res, f, sort_keys=False, default_flow_style=False)
+            yaml.dump(self.res, f, sort_keys=False, default_flow_style=False,  allow_unicode=True)
 
 
 def get_args() : 
