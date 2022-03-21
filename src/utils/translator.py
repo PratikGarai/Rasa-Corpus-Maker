@@ -6,7 +6,7 @@ class Translator :
     def __init__(self, key : str, region : str, lang : str) :
         self.key = key
         self.region = region
-        self.URL = f"api.cognitive.microsofttranslator.com/translator/text/v3.0/translate?to={lang}"
+        self.URL = f"https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to={lang}"
         self.headers = {
             "Ocp-Apim-Subscription-Key" : self.key,
             "Ocp-Apim-Subscription-Region" : self.region,
@@ -14,15 +14,15 @@ class Translator :
         }
     
     def translate(self, data : str) -> str:
-        payload = {
+        payload = [{
             "Text" : data
-        }
+        }]
         r = requests.post(self.URL, data=json.dumps(payload), headers=self.headers)
         print(r.json())
         return data
     
     def test(self) :
-        pass
+        res = self.translate("Hello I am a robot")
 
 
 def get_args() : 
@@ -31,4 +31,12 @@ def get_args() :
     return parser.parse_args()
 
 if __name__=="__main__" :
-    t = Translator()
+    args = get_args()
+    with open(args.secret) as f : 
+        secrets = json.load(f)
+    translator = Translator(
+            secrets["azure"]["key1"], 
+            secrets["azure"]["region"], 
+            "mr"
+    )
+    translator.test()
