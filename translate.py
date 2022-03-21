@@ -28,19 +28,27 @@ class TranslatorDriver :
 
     def print_result(self) :    
         pprint.pprint(self.data)
+
+    
+    def translate(self, data : str) :
+        data = self.translator.translate(data)
+        res = data[0]["translations"][0]["text"]
+        print(res)
+
+        return res
     
 
     def process(self) :
         res = {}
         res["categories"] = self.data["categories"]
-
         conversations = []
         for conversation in self.data["conversations"] :
             d = []
             for dialogue in conversation : 
-                # d.append(self.translator.translate(dialogue))
-                d.append(dialogue)
+                d.append(self.translate(dialogue))
+                break
             conversations.append(d)
+            break
         res["conversations"] = conversations
         self.res = res
 
@@ -51,7 +59,7 @@ class TranslatorDriver :
     
 
     def save_result(self):
-        with open(os.path.join("outputs", self.outfile_name+".yml"), 'w') as f:
+        with open(os.path.join("outputs", self.outfile_name+".yml"), 'w',  encoding="utf-8") as f:
             yaml.dump(self.res, f, sort_keys=False, default_flow_style=False)
 
 
@@ -67,6 +75,5 @@ def get_args() :
 if __name__=="__main__" :
     args = get_args()
     t = TranslatorDriver(args.data, args.name, args.secret)
-    t.print_result()
     t.process()
     t.save_result()

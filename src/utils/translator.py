@@ -18,8 +18,7 @@ class Translator :
             "Text" : data
         }]
         r = requests.post(self.URL, data=json.dumps(payload), headers=self.headers)
-        print(r.json())
-        return data
+        return r.json()
     
     def test(self) :
         res = self.translate("Hello I am a robot")
