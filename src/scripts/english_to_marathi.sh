@@ -1,0 +1,1 @@
+python translate.py --data src/inputs/history.yml --name history_marathi
