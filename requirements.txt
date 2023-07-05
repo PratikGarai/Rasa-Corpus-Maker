@@ -49,7 +49,7 @@ google-auth==1.35.0
 google-auth-oauthlib==0.4.6
 google-pasta==0.2.0
 greenlet==1.1.2
-grpcio==1.43.0
+grpcio==1.53.0
 h11==0.9.0
 h5py==3.1.0
 hi-pipeline @ file:///home/pratik/stuff/Hindi-Chatbot-RASA/spacy_packed/hi/hi_pipeline-0.0.0/dist/hi_pipeline-0.0.0.tar.gz
