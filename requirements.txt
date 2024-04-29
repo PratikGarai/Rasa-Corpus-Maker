@@ -34,7 +34,7 @@ cymem==2.0.6
 dask==2021.11.2
 decorator==4.4.2
 dm-tree==0.1.6
-dnspython==1.16.0
+dnspython==2.6.1
 docopt==0.6.2
 fbmessenger==6.0.0
 filelock==3.4.2
